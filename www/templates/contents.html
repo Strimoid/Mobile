@@ -1,0 +1,37 @@
+<ion-view view-title="Contents">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <div class="list list-inset" ng-repeat="content in contents">
+        <div class="item item-divider" >
+          <a href="#/app/content/{{ content._id }}">{{ content.title }}</a>
+        </div>
+        <div class="item item-body">
+          <img class="full-image" ng-src="{{ content.thumbnail | cdn:'thumbnails':500:250 }}" ng-if="content.thumbnail">
+          <p>{{ content.description }}</p>
+          <p>
+            <a href="#" class="subdued">g/{{ content.group.name }}</a>
+            <a href="#" class="subdued">u/{{ content.user.name }}</a>
+          </p>
+        </div>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+          <a class="tab-item" href="#">
+            <i class="icon ion-thumbsup"></i>
+            {{ content.uv }}
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-thumbsdown"></i>
+            {{ content.dv }}
+          </a>
+          <a class="tab-item" href="#">
+            <i class="icon ion-chatbox"></i>
+            {{ content.comments_count }}
+          </a>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

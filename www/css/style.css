@@ -1,0 +1,9 @@
+/* Empty. Add your own CSS if you like */
+
+.animated.short {
+  animation-duration: 0.5s;
+}
+
+.animated.quick {
+  animation-duration: 0.25s;
+}

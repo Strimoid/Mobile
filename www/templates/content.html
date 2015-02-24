@@ -1,0 +1,37 @@
+<ion-view>
+  <ion-nav-title>
+      {{ content.title || 'loading...' }}
+    </ion-nav-title>
+  <ion-content>
+    <div class="list list-inset">
+      <div class="item item-body">
+        <img class="full-image" src="{{ content.thumbnail | cdn:'thumbnails':500:250 }}" ng-if="content.thumbnail">
+        <p>{{ content.description }}</p>
+        <p>
+          <a href="#" class="subdued">g/{{ content.group.name }}</a>
+          <a href="#" class="subdued">u/{{ content.user.name }}</a>
+        </p>
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          {{ content.uv }}
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsdown"></i>
+          {{ content.dv }}
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          {{ content.comments_count }}
+        </a>
+      </div>
+    </div>
+
+    <ion-list>
+      <ion-item ng-repeat="comment in content.comments">
+        {{ comment.text }}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
